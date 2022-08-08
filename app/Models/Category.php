@@ -13,4 +13,13 @@ class Category extends Model
     {
         return $this->hasMany(Post::class);
     }
+
+
+    protected $guarded = [];
+
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }
