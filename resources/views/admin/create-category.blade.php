@@ -7,6 +7,11 @@
           <div class="col-lg-7 bg-light" style="margin-top:0px; width:100%">
 
           <div class="col-lg-10 bg-none mt-5">
+            @if(session()->has('success'))
+            <div class="message text-center text-success">
+                {{ session()->get('success') }}
+            </div>
+            @endif
             <form method="post" action="{{ route('store-category') }}" entype="multipart/form-data">
                 @csrf
                 <div class="form-group">

@@ -18,8 +18,8 @@ return new class extends Migration
             $table->foreignId('user_id')->onDelete('cascade');
             $table->foreignId('category_id')->onDelete('cascade');
             $table->string('title');
-            $table->string('meta_title');
-            $table->string('slug');
+            $table->string('meta_title')->unique();
+            $table->string('slug')->unique();
             $table->text('content');
             $table->string('image')->nullable();
             $table->timestamps();

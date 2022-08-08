@@ -7,6 +7,11 @@
           <div class="col-lg-7 bg-light" style="margin-top:0px; width:100%">
 
           <div class="col-lg-10 bg-none mt-5">
+            @if(session()->has('success'))
+            <div class="message text-center text-success">
+                {{ session()->get('success') }}
+            </div>
+            @endif
             <form method="post" action="{{ route('edit-category', ['category' => $category->slug]) }}" entype="multipart/form-data">
                 @csrf
                 @method('patch')
