@@ -8,4 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     use HasFactory;
+
+    public function getPostCategoryRelation()
+    {
+        return $this->hasMany(Post::class);
+    }
+
+
+    protected $guarded = [];
+
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }
