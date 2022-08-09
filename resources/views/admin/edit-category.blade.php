@@ -24,7 +24,7 @@
                 <div class="form-group">
                     <label class="col-md-3 text-dark" for="meta_title">Meta Title:</label>
                     <div class="col-md-12">
-                        <input type="text" name="meta_title" id="meta_title" value="{{ $category->meta_title }}" class="form-control" required />
+                        <input type="text" name="meta_title" id="meta_title" value="{{ $category->meta_title }}" class="form-control" readonly required />
                     </div>
                 </div>
 

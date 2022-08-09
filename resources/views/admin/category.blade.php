@@ -21,7 +21,7 @@
                                 <th>Actions</th>
                             </tr>
                         </thead>
-                        @forelse($Categories as $category)
+                        @forelse($categories as $category)
                         <tbody>
                            <tr>
                                 <td>{{ $category->id}} </td>

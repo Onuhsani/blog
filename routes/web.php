@@ -45,7 +45,4 @@ Route::patch('/admin/categories/update-category/{category}', [CategoryController
 Route::delete('/admin/categories/delete-category/{category}', [CategoryController::class, 'destroy'])->name('delete-category');
 
 
-//oute::get('/admin/categories', ['CategoryController', 'index']);
-
-
 require __DIR__.'/auth.php';

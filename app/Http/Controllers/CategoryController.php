@@ -10,14 +10,14 @@ class CategoryController extends Controller
 
     public function index()
     {
-        $Categories = Category::all();
-        return view('admin.category', compact('Categories'));
+        $categories = Category::all();
+        return view('admin.category', compact('categories'));
     }
 
 
     public function create()
     {
-        return view('admin/create-category');
+        return view('admin.create-category');
     }
 
 
@@ -40,16 +40,9 @@ class CategoryController extends Controller
     }
 
 
-    public function show(Category $category)
-    {
-        return view('/admin/viewcategory', compact('category'));
-    }
-
-
     public function edit(Category $category)
     {   
-        //dd($category);
-        return view('/admin/edit-category', compact('category'));
+        return view('admin.edit-category', compact('category'));
     }
 
 
