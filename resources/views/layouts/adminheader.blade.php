@@ -71,10 +71,18 @@
               </a>
           </li>
           <li class="sub-menu">
+            <a href="{{ route('admin.create') }}">
+              <span>Add Admin</span>
+              </a>
+          </li>
+          <li class="sub-menu">
 
             <a href="route('logout')" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
               <span>Logout</span>
             </a>
+            <form id="logout-form" action="{{route('logout')}}" method="post" class="d-none">
+                @csrf
+            </form>
           </li>
         </ul>
        

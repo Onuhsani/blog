@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\AdminRegistrationController;
 
 
 /*
@@ -16,8 +17,8 @@ use App\Http\Controllers\CategoryController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/home', function () {
+    return view("home");
 });
 
 Route::get('/dashboard', function () {
@@ -36,6 +37,11 @@ Route::get('/admin/viewblogpost', function(){
 Route::get('/admin', function(){
     return view('admin.dashboard');
 });
+
+
+Route::get('/admin/register', [AdminRegistrationController::class, 'create'])->name('admin.create');
+Route::post('/admin/register', [AdminRegistrationController::class, 'register'])->name('admin-register');
+Route::get('/admin/logout', [AdminRegistrationController::class, 'destroy'])->name('admin.logout');
 
 Route::get('/admin/categories', [CategoryController::class, 'index'])->name('category-index');
 Route::get('/admin/categories/create-category', [CategoryController::class, 'create'])->name('create-category');

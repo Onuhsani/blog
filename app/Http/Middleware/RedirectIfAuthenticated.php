@@ -6,6 +6,7 @@ use App\Providers\RouteServiceProvider;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class RedirectIfAuthenticated
 {
@@ -23,7 +24,14 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                return redirect(RouteServiceProvider::HOME);
+
+                $user = Auth::guard($guard);
+                if($user->hasUser(1)){
+                    return redirect(route('category-index'));
+                }
+                else if($user->hasUser(0)){
+                    return redirect(route('dashboard'));
+                }
             }
         }
 

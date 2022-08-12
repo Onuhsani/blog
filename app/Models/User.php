@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
     ];
 
     /**
@@ -45,5 +46,10 @@ class User extends Authenticatable
     public function postRelation()
     {
         return $this->hasMany(Post::class);
+    }
+
+    public function hasRole(bool $role):bool
+    {
+        return $this->Attribute('role') === $role;
     }
 }
