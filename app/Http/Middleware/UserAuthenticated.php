@@ -21,8 +21,8 @@ class UserAuthenticated
         if(Auth::check())
         {
             $user = Auth::user();
-            if(user->hasRole(1)){
-                return redirect(route('admin.category'));
+            if($user->hasRole(1)){
+                return redirect(route('admin.index'));
             }
             else if($user->hasRole(0)){
                 return $next($request);

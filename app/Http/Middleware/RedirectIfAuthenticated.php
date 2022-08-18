@@ -20,16 +20,16 @@ class RedirectIfAuthenticated
      */
     public function handle(Request $request, Closure $next, ...$guards)
     {
-        $guards = empty($guards) ? [null] : $guards;
+        $guards = empty($guards)?[null]:$guards;
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
 
-                $user = Auth::guard($guard);
-                if($user->hasUser(1)){
-                    return redirect(route('category-index'));
+                $users = Auth::guard($guard);
+                if($users->hasUser(1)){
+                    return redirect(route('admin.index'));
                 }
-                else if($user->hasUser(0)){
+                else if($users->hasUser(0)){
                     return redirect(route('dashboard'));
                 }
             }

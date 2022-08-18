@@ -56,6 +56,11 @@
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
           <li class="sub-menu">
+            <a class="" href="{{ route('admin.index') }}">
+              <span>Dashboard</span>
+              </a>
+          </li>
+          <li class="sub-menu">
             <a class="" href="#">
               <span>Posts</span>
               </a>

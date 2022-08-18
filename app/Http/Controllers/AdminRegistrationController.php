@@ -14,6 +14,12 @@ use Illuminate\Validation\Rules;
 class AdminRegistrationController extends Controller
 {
 
+    public function index()
+    {
+        return view('admin.admin-dashboard');
+    }
+
+
     public function create()
     {
         return view('admin.admin-register');

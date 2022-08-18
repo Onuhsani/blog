@@ -22,7 +22,7 @@ class AdminAuthenticated
         if(Auth::check())
         {
             $user = Auth::user();
-            if(user->hasRole(0)){
+            if($user->hasRole(0)){
                 return redirect(route('dashboard'));
             }
             else if($user->hasRole(1)){
