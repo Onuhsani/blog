@@ -16,14 +16,14 @@
       <div class="row col-md-4 col-md-offset-4 mt">
           <div class="panel panel-primary mt-4">
               <div class="panel-heading text-center">
-                  <h4>Create Account</h4>
+                  <h4>Create Admin Account</h4>
               </div>
               <div class="panel-body">
-                <form method="POST" action="{{ route('register') }}">
+                <form method="POST" action="{{ route('admin-register') }}">
                   @csrf
                   <div class="form-group">
-                    <label for="fullname">Name:</label>
-                    <input type="text" name="name" class="form-control" placeholder="Enter name" id="fullname" required/>
+                    <label for="name">Name:</label>
+                    <input type="text" name="name" class="form-control" placeholder="Enter name" id="name" required/>
                   </div>
                   <div class="form-group">
                     <label for="email">Email:</label>

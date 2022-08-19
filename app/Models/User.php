@@ -17,11 +17,14 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+
+    protected $guarded = [];
+    // protected $fillable = [
+    //     'name',
+    //     'email',
+    //     'password',
+    //     'role',
+    // ];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -45,5 +48,10 @@ class User extends Authenticatable
     public function postRelation()
     {
         return $this->hasMany(Post::class);
+    }
+
+    public function hasRole(bool $role)
+    {
+        return $this->getAttribute('role') === $role;
     }
 }
