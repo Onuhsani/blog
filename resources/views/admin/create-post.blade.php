@@ -8,11 +8,11 @@
 
           <div class="col-lg-10 bg-none mt-5">
             @if(session()->has('success'))
-            <div class="message text-center text-light bg-success">
+            <div class="message text-center text-success">
                 {{ session()->get('success') }}
             </div>
             @endif
-            <form method="post" action="{{ route('store-post') }}" entype="multipart/form-data" files="true">
+            <form method="post" action="{{ route('store-post') }}" enctype="multipart/form-data" files="true">
                 @csrf
                 <div class="form-group">
                     <label class="col-md-3 text-dark" for="title">Title:</label>

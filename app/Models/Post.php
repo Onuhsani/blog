@@ -9,13 +9,14 @@ class Post extends Model
 {
     use HasFactory;
 
-
+    protected $guarded = [];
+    
     public function getUserRelation()
     {
         return $this->belongsT0(User::class);
     }
 
-
+    
     public function getCommentRelation()
     {
         return $this->hasMany(Comment::class);

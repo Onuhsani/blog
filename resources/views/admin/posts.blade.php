@@ -19,17 +19,15 @@
                                 <th>User</th>
                                 <th>Category</th>
                                 <th>Title</th>
-                                <th>Meta_title</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         @forelse($posts as $post)
                         <tbody>
                            <tr>
-                                <td>{{ $post->id}} </td>
-                                <td>{{ $post->category }}</td>
+                                <td>{{ $post->user_id}} </td>
+                                <td>{{ $post->category_id }}</td>
                                 <td>{{ $post->title }}</td>
-                                <td>{{ $post->meta_title }}</td>
                                 <td>
                                     <a href="{{ route('show-post', ['post' => $post->slug]) }}"><label class="btn btn-success fa fa-pencil">View</label></a>
                                     <form method="post" action = "{{ route('delete-post', ['post' => $post->slug]) }}" entype="multipart/form-data">

@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
+use App\Models\User;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Auth;
 
 class PostController extends Controller
 {
@@ -14,7 +16,6 @@ class PostController extends Controller
         $posts = Post::all();
         return view('admin.posts', compact('posts'));
     }
-
 
     public function create()
     {      
@@ -33,39 +34,38 @@ class PostController extends Controller
             'image' => ['required', 'max:2048'],
         ]);
         //dd($request);
-        $path = public_path('public/images');
-        if ( ! file_exists($path) ){
-            mkdir($path, 0777, true);
+        $file_name = null;
+        if ($request->has('image')) {
+            $file_name = $request->file('image')->store('file_folder', 'public_uploads');
         }
-        $file= $request->file('image');
-        $fileName= uniqid().'_'.trim($file->getClientOriginalName());
-        $file-> move($path, $fileName);
-        
+        //
+        $category = Category::find($request->category);
         $slug = str_replace(' ', '-', $request->meta_title);
         $current = Auth::User();
         $id = $current->id;
+
         Post::create([
-            'id'=>$id,
+            'user_id' => $id,
+            'category_id' => $category->id,
             'title'=>$request->title,
             'meta_title'=>$request->meta_title,
             'slug'=>$slug,
             'content'=>$request->content,
-            'image'=>$fileName,  
+            'image'=>$file_name,  
         ]);
-
         return redirect()->back()->with('success', 'Post created');
     }
 
 
     public function show(Post $post)
     {
-        return view('admin.viewpost', 'post');
+        return view('admin.viewpost', compact('post'));
     }
 
 
     public function edit(Post $post)
     {
-        return view('admin.edit-post', 'post');
+        return view('admin.edit-post', compact('post'));
     }
 
 
@@ -78,9 +78,14 @@ class PostController extends Controller
             'image' => ['required', 'max:2048'],
         ]);
 
+        $file_name = null;
+        if ($request->has('image')) {
+            $file_name = $request->file('image')->store('file_folder', 'public_uploads');
+        }
+
         $post->title = $request->title;
         $post->content = $request->content;
-        $post->image = $filename;
+        $post->image = $file_name;
         $post->save();
 
         return redirect()->back()->with('success', 'Post updated successfully');

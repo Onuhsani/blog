@@ -5,17 +5,17 @@
     <section class="wrapper site-min-height">
         <div class="row mt">
           <div class="col-lg-12 bg-light" style="margin-top:0px; width:100%">
-            <form method="post" action="{{ route('edit-post') }}" entype="multipart/form-data" files="true">
+            <form method="get" action="{{ route('edit-post', ['post' => $post->slug]) }}" enctype="multipart/form-data" files="true">
                 @csrf
                 <div class="form-group">
-                    <h2 class="col-md-12">{{ $post->title }}</h2>
+                    <h2 class="col-md-12 text-center mt-4">{{ $post->title }}</h2>
                 </div>
                 <div class="form-group">
-                    <label class="col-md-6">Author: <span class="bold">{{ $post->user()->name }}</span></label>
-                    <label class="col-md-6">Category: <span class="bold">{{ $post->category()->title }}</span></label>
+                    <label class="col-md-5">Author: <span class="bold">{{ $post->title }}</span></label>
+                    <label class="col-md-5 text-right">Category: <span class="strong">{{ $post->title }}</span></label>
                 </div>
                 <div class="form-group mt-2">
-                    <label class="col-md-12"><img src="/public/images/{{ $post->image }}" width="100%" height="300px" /></label>
+                    <label class="col-md-12"><img src="public/{{ $post->image }}" width="100%" height="300px" /></label>
                 </div>
                 <div class="form-group mt-4">
                     <label class="col-md-3 text-dark" for="content">Content:</label>
