@@ -71,7 +71,7 @@
               </a>
           </li>
           <li class="sub-menu">
-            <a href="#">
+            <a href="{{ route('user-index') }}">
               <span>Users</span>
               </a>
           </li>
