@@ -11,19 +11,19 @@ class Post extends Model
 
     protected $guarded = [];
     
-    public function getUserRelation()
+    public function user()
     {
-        return $this->belongsT0(User::class);
+        return $this->belongsTo(User::class);
     }
 
     
-    public function getCommentRelation()
+    public function comment()
     {
         return $this->hasMany(Comment::class);
     }
 
 
-    public function getCategoryRelation()
+    public function category()
     {
         return $this->belongsTo(Category::class);
     }

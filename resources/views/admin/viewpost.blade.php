@@ -15,7 +15,7 @@
                     <label class="col-md-5 text-right">Category: <span class="strong">{{ $post->title }}</span></label>
                 </div>
                 <div class="form-group mt-2">
-                    <label class="col-md-12"><img src="public/{{ $post->image }}" width="100%" height="300px" /></label>
+                    <label class="col-md-12"><img src="public/".{{ $post->image }} width="100%" height="300px" /></label>
                 </div>
                 <div class="form-group mt-4">
                     <label class="col-md-3 text-dark" for="content">Content:</label>
