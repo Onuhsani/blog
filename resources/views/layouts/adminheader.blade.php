@@ -61,7 +61,7 @@
               </a>
           </li>
           <li class="sub-menu">
-            <a class="" href="#">
+            <a class="" href="{{ route('post-index') }}">
               <span>Posts</span>
               </a>
           </li>
