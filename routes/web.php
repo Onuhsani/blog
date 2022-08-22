@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\PagesController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\AdminRegistrationController;
 
@@ -41,4 +42,7 @@ Route::middleware(['auth'])
         Route::get('/posts/update-post/{post}', [PostController::class, 'edit'])->name('edit-post');
         Route::patch('/posts/update-post/{post}', [PostController::class, 'update'])->name('update-post');
         Route::delete('/post/delete-post/{post}', [PostController::class, 'destroy'])->name('delete-post');
+
+        Route::get('/users', [PagesController::class, 'userIndex'])->name('user-index');
+        Route::delete('/users/delete/{user:id}', [PagesController::class, 'destroy'])->name('delete-user');
     });

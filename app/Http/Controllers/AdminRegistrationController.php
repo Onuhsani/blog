@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Post;
+use App\Models\Category;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
@@ -16,7 +18,10 @@ class AdminRegistrationController extends Controller
 
     public function index()
     {
-        return view('admin.admin-dashboard');
+        $userCount = count(User::all());
+        $postCount = count(Post::all());
+        $categoryCount = count(Category::all());
+        return view('admin.admin-dashboard', compact(['userCount', 'postCount', 'categoryCount']));
     }
 
 
