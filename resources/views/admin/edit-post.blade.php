@@ -24,7 +24,7 @@
                 <div class="form-group">
                     <label class="col-md-3 text-dark" for="content">Content:</label>
                     <div class="col-md-12">
-                        <textarea rows="20" class="form-control col-md-12" value="{{ $post->content }}" id="content" name="content" required>Enter post content...</textarea>
+                        <textarea rows="20" class="form-control col-md-12" id="content" name="content" required>{{ $post->content }}</textarea>
                     </div>
                 </div>
                 <div class="form-group">

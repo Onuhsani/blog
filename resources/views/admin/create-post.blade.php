@@ -17,7 +17,7 @@
                 <div class="form-group">
                     <label class="col-md-3 text-dark" for="title">Title:</label>
                     <div class="col-md-7">
-                        <input type="text" name="title" id="title" placeholder="Enter Category title" class="form-control" required />
+                        <input type="text" name="title" id="title" placeholder="Enter post title" class="form-control" required />
                     </div>
                 </div>
                 <div class="form-group">
