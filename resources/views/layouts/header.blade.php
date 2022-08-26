@@ -66,7 +66,8 @@
             @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth
-                        <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
+                        <a href="{{ route('home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
+                        <a href="{{ route('user-logout') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">| Logout</a>
                     @else
                         <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
 
@@ -92,26 +93,15 @@
           <div class="mr-auto">
             <nav class="site-navigation position-relative text-right" role="navigation">
               <ul class="site-menu main-menu js-clone-nav mr-auto d-none pl-0 d-lg-block">
+                <li>
+                  <a href="{{ route('home') }}" class="nav-link text-left">Home</a>
+                </li>
+              @foreach($categories as $category)
                 <li class="active">
-                  <a href="index.html" class="nav-link text-left">Home</a>
+                  <a href="#" class="nav-link text-left">{{ $category->title }}</a>
                 </li>
-                <li>
-                  <a href="categories.html" class="nav-link text-left">Categories</a>
-                </li>
-                <li>
-                  <a href="categories.html" class="nav-link text-left">Politics</a>
-                </li>
-                <li>
-                  <a href="categories.html" class="nav-link text-left">Business</a>
-                </li>
-                <li>
-                    <a href="categories.html" class="nav-link text-left">Health</a>
-                </li>
-                <li><a href="categories.html" class="nav-link text-left">Design</a></li>
-                <li>
-                  <a href="categories.html" class="nav-link text-left">Sport</a>
-                </li>
-                <li><a href="contact.html" class="nav-link text-left">Contact</a></li>
+              @endforeach
+                
               </ul>                                                                                                                                                                                                                                                                                         
             </nav>
 

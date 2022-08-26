@@ -5,27 +5,27 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\UsersController;
 use App\Http\Controllers\AdminRegistrationController;
 
 require __DIR__.'/auth.php';
 
 Route::middleware(['auth'])
     ->group(function(){
-        Route::get('/home', function () {
-            return view("home");
-        })->name('home');
-        
+
         Route::get('/dashboard', function () {
             return view('dashboard');
         })->name('dashboard');
-    });
+        Route::get('/home', [UsersController::class, 'index'])->name('home');
+        Route::get('/logout', [AdminRegistrationController::class, 'destroy'])->name('user-logout');
+});
 
 Route::middleware(['auth'])
     ->prefix('admin')
     ->group(function(){
         Route::get('/', [AdminRegistrationController::class, 'index'])->name('admin.index');
         Route::get('/register', [AdminRegistrationController::class, 'create'])->name('admin.create');
-        Route::post('/register', [AdminRegistrationController::class, 'register'])->name('admin-register');
+        Route::post('/register', [AdminRegistrationController::class, 'register'])->name('admin-register')->withoutmiddleware('auth');
         Route::get('/logout', [AdminRegistrationController::class, 'destroy'])->name('admin.logout');
 
         Route::get('/categories', [CategoryController::class, 'index'])->name('category-index');
