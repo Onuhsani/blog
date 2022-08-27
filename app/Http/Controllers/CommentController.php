@@ -3,25 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Post;
+use App\Models\User;
+use App\Models\Category;
+use App\Models\Comment;
+use Auth;
 
 class CommentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
     {
         //
     }
@@ -32,9 +22,22 @@ class CommentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Post $post)
     {
-        //
+        $request->validate([
+            'comment' => ['required', 'string'],
+        ]);
+
+        $user_id = Auth::User()->id;
+        $post_id = $post->id;
+        Comment::create([
+            'user_id' => $user_id,
+            'post_id' => $post_id,
+            'title' => 'comment',
+            'content' => $request->comment,
+        ]);
+
+        return redirect()->back();
     }
 
     /**

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\AdminRegistrationController;
 
@@ -17,7 +18,10 @@ Route::middleware(['auth'])
             return view('dashboard');
         })->name('dashboard');
         Route::get('/home', [UsersController::class, 'index'])->name('home');
+        Route::get('/post-view/{post}', [UsersController::class, 'viewPost'])->name('view-post');
+        Route::get('/post-category/{category}', [UsersController::class, 'viewCategory'])->name('view-category');
         Route::get('/logout', [AdminRegistrationController::class, 'destroy'])->name('user-logout');
+        Route::post('/comment/{post}', [CommentController::class, 'store'])->name('post-comment');
 });
 
 Route::middleware(['auth'])
