@@ -17,7 +17,7 @@ Route::middleware(['auth'])
         Route::get('/dashboard', function () {
             return view('dashboard');
         })->name('dashboard');
-        Route::get('/home', [UsersController::class, 'index'])->name('home');
+        Route::get('/', [UsersController::class, 'index'])->name('home');
         Route::get('/post-view/{post}', [UsersController::class, 'viewPost'])->name('view-post');
         Route::get('/post-category/{category}', [UsersController::class, 'viewCategory'])->name('view-category');
         Route::get('/logout', [AdminRegistrationController::class, 'destroy'])->name('user-logout');

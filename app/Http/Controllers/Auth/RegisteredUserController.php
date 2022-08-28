@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Post;
+use App\Models\Category;
+use App\Models\Comment;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
@@ -31,7 +34,7 @@ class RegisteredUserController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request)
+    public function store(Request $request, Post $post)
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
@@ -50,6 +53,12 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return view('welcome.php');
+        $categories = Category::all();
+        $latest = Post::orderby('id', 'DESC')->paginate(5);
+        $post = Post::paginate(15);
+        $posts = Post::orderby('id', 'DESC')->paginate(15);
+        $trendings = Post::all()->take(10);
+
+        return view('home', compact(['post', 'trendings', 'categories', 'posts']));
     }
 }
