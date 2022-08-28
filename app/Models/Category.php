@@ -9,8 +9,17 @@ class Category extends Model
 {
     use HasFactory;
 
-    public function getPostCategoryRelation()
+    public function post()
     {
         return $this->hasMany(Post::class);
+    }
+
+
+    protected $guarded = [];
+
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
     }
 }
