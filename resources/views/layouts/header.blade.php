@@ -98,7 +98,7 @@
                 </li>
               @foreach($categories as $category)
                 <li class="active">
-                  <a href="#" class="nav-link text-left">{{ $category->title }}</a>
+                  <a href="{{ route('view-category', ['category' => $category->slug]) }}" class="nav-link text-left">{{ $category->title }}</a>
                 </li>
               @endforeach
                 
