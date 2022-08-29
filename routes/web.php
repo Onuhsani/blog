@@ -14,9 +14,7 @@ require __DIR__.'/auth.php';
 Route::middleware(['auth'])
     ->group(function(){
 
-        Route::get('/dashboard', function () {
-            return view('dashboard');
-        })->name('dashboard');
+       
         Route::get('/', [UsersController::class, 'index'])->name('home');
         Route::get('/post-view/{post}', [UsersController::class, 'viewPost'])->name('view-post');
         Route::get('/post-category/{category}', [UsersController::class, 'viewCategory'])->name('view-category');

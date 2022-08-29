@@ -30,7 +30,7 @@ class RedirectIfAuthenticated
                     return redirect(route('admin.index'));
                 }
                 else if($users->hasUser(0)){
-                    return redirect(route('dashboard'));
+                    return redirect(route('home'));
                 }
             }
         }
