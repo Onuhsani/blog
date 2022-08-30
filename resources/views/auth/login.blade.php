@@ -18,6 +18,11 @@
               <div class="panel-heading text-center">
                   <h4>Login Here</h4>
               </div>
+              @if(session()->has('error'))
+                    <div class="message text-center text-danger mt-3">
+                        {{ session()->get('error') }}
+                    </div>
+                @endif
               <div class="panel-body">
                 <form method="POST" action="{{ route('login') }}">
                   @csrf
@@ -40,7 +45,7 @@
                     </div>
                   <div class="form-group">
                     @if (Route::has('password.request'))
-                        <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
+                        <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('contact.create') }}">
                             {{ __('Forgot your password?') }}
                         </a>
                     @endif

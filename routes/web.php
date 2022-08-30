@@ -8,6 +8,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\AdminRegistrationController;
+use App\Http\Controllers\ContactController;
 
 require __DIR__.'/auth.php';
 
@@ -20,6 +21,11 @@ Route::middleware(['auth'])
         Route::get('/post-category/{category}', [UsersController::class, 'viewCategory'])->name('view-category');
         Route::get('/logout', [AdminRegistrationController::class, 'destroy'])->name('user-logout');
         Route::post('/comment/{post}', [CommentController::class, 'store'])->name('post-comment');
+
+        Route::get('/login/forgot-password', [ContactController::class, 'create'])->name('contact.create')->withoutmiddleware('auth');
+        Route::post('/login/forgot-password', [ContactController::class, 'send'])->name('contact.send')->withoutmiddleware('auth');
+        Route::get('/login/password-reset', [ContactController::class, 'createReset'])->name('reset.password')->withoutmiddleware('auth');
+        Route::post('/login/password-reset', [ContactController::class, 'passwordReset'])->name('password-reset')->withoutmiddleware('auth');
 });
 
 Route::middleware(['auth'])
